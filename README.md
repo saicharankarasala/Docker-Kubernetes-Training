@@ -17,12 +17,13 @@ A comprehensive, hands-on training repository covering Docker and Kubernetes fun
 
 ## 🎯 About This Repository
 
-This repository contains a **14-day comprehensive training program** that takes you from Docker basics to advanced Kubernetes concepts including:
+This repository contains an **18-day comprehensive training program** that takes you from Docker basics to advanced Kubernetes concepts including:
 
 - **Docker Fundamentals**: Images, containers, networking, volumes, and best practices
 - **Kubernetes Core**: Pods, Deployments, Services, ConfigMaps, Secrets
 - **AWS EKS**: Managed Kubernetes on AWS with real-world scenarios
 - **Production Concepts**: Monitoring, security, storage, and scaling
+- **Advanced Topics**: RDS integration, auto-scaling, ingress, and performance optimization
 - **Hands-on Projects**: Real applications with step-by-step implementations
 
 ### 🏗️ Repository Structure
@@ -43,8 +44,13 @@ Docker-Kubernetes-Training/
 ├── Day-12/                   # EKS Pod Identity
 ├── Day-13/                   # Persistent Storage (PV/PVC)
 ├── Day-14/                   # EBS CSI Driver
+├── Day-15/                   # EKS Storage with RDS Database
+├── Day-16/                   # Advanced Applications (Ball App, Snake App)
+├── Day-17/                   # Ingress & Annotations
+├── Day-18/                   # Horizontal Pod Autoscaler (HPA)
 ├── Docker-Interview-Q&A/      # Docker interview questions
 ├── Kubernetes-Interview-Q&A/ # Kubernetes interview questions
+├── iam_policy.json           # AWS IAM policies
 └── Definitions.md            # Comprehensive term definitions
 ```
 
@@ -71,6 +77,12 @@ Docker-Kubernetes-Training/
 - **Day 12**: EKS Pod Identity and IAM integration
 - **Day 13**: Persistent Volumes and Persistent Volume Claims
 - **Day 14**: EBS CSI Driver and production storage
+
+### **Phase 4: Production & Advanced Topics (Days 15-18)**
+- **Day 15**: EKS Storage with RDS Database integration
+- **Day 16**: Advanced Applications (Ball App, Snake App with multiple services)
+- **Day 17**: Ingress Controllers and Annotations
+- **Day 18**: Horizontal Pod Autoscaler (HPA) and performance optimization
 
 ---
 
@@ -168,6 +180,15 @@ kubectl get nodes
 | **Day 13** | Persistent Storage | PV, PVC, EBS integration | Database with persistent storage |
 | **Day 14** | CSI Driver | Dynamic provisioning, gp3 volumes | Production storage setup |
 
+### **🚀 Production & Advanced Phase (Days 15-18)**
+
+| Day | Topic | Key Concepts | Hands-on Project |
+|-----|-------|--------------|------------------|
+| **Day 15** | RDS Integration | External databases, MySQL service | User management with RDS |
+| **Day 16** | Advanced Apps | Multi-service applications | Ball App & Snake App |
+| **Day 17** | Ingress & Annotations | Load balancing, routing | Ingress controller setup |
+| **Day 18** | Auto-scaling | HPA, performance monitoring | Auto-scaling demo |
+
 ---
 
 ## 🛠️ Additional Resources
@@ -183,11 +204,17 @@ kubectl get nodes
 - **Voting App** (Day 4) - Multi-tier application
 - **Weather Dashboard** (Day 9) - React + Node.js with ConfigMaps/Secrets
 - **EKS Storage Demo** (Day 14) - Production storage with EBS
+- **User Management with RDS** (Day 15) - Database integration with MySQL
+- **Ball App** (Day 16) - Interactive web application with Node.js
+- **Enhanced Snake App** (Day 16) - Multi-service deployment
+- **Ingress Demo** (Day 17) - Advanced networking and routing
+- **HPA Demo** (Day 18) - Auto-scaling and performance optimization
 
 ### **🔧 Tools & Scripts**
 - **EKS Cluster Scripts** - Automated cluster creation/deletion
 - **Docker Build Scripts** - Image building automation
 - **Kubernetes Manifests** - Ready-to-use YAML files
+- **IAM Policies** - AWS permissions and policies configuration
 - **Troubleshooting Guides** - Common issues and solutions
 
 ---
@@ -239,6 +266,7 @@ After completing this training, you will be able to:
 - ✅ Create and manage EKS clusters
 - ✅ Implement Pod Identity and IAM integration
 - ✅ Configure persistent storage with EBS
+- ✅ Integrate with RDS databases
 - ✅ Set up production-ready environments
 - ✅ Troubleshoot cluster issues
 
@@ -246,6 +274,9 @@ After completing this training, you will be able to:
 - ✅ Design scalable container architectures
 - ✅ Implement security best practices
 - ✅ Manage configuration and secrets
+- ✅ Set up ingress controllers and load balancing
+- ✅ Configure auto-scaling with HPA
+- ✅ Integrate external databases and services
 - ✅ Monitor and troubleshoot applications
 - ✅ Prepare for technical interviews
 
@@ -291,10 +322,11 @@ Ready to begin your Docker and Kubernetes journey? Start here:
 2. **🐳 Begin with [Day-1](./Day-1/)** for Docker introduction
 3. **☸️ Progress through [Day-6](./Day-6/)** for Kubernetes fundamentals
 4. **☁️ Advance to [Day-10](./Day-10/)** for AWS EKS
-5. **💼 Practice with [Interview Q&A](./Docker-Interview-Q&A/)** for job preparation
+5. **🚀 Master advanced topics with [Day-15](./Day-15/)** for production scenarios
+6. **💼 Practice with [Interview Q&A](./Docker-Interview-Q&A/)** for job preparation
 
 **Happy Learning! 🚀**
 
 ---
 
-*This repository provides a complete learning path from Docker basics to production-ready Kubernetes deployments. Each day builds upon the previous concepts, ensuring a solid foundation for container orchestration and cloud-native applications.*
+*This repository provides a complete 18-day learning path from Docker basics to production-ready Kubernetes deployments with advanced topics including RDS integration, auto-scaling, and ingress controllers. Each day builds upon the previous concepts, ensuring a solid foundation for container orchestration and cloud-native applications.*
