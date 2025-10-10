@@ -11,6 +11,9 @@
 - [Kubernetes Services](#kubernetes-services)
 - [Kubernetes Storage](#kubernetes-storage)
 - [AWS EKS](#aws-eks)
+- [AWS RDS & Database Integration](#aws-rds--database-integration)
+- [Ingress & Load Balancing](#ingress--load-balancing)
+- [Auto-scaling & Performance](#auto-scaling--performance)
 - [Security & Access Control](#security--access-control)
 - [Monitoring & Health Checks](#monitoring--health-checks)
 - [Best Practices](#best-practices)
@@ -272,6 +275,138 @@
 
 ---
 
+## AWS RDS & Database Integration
+
+### Q: What is Amazon RDS?
+**A:** Amazon RDS (Relational Database Service) is a fully managed service by AWS that simplifies setting up, operating, and scaling relational databases in the cloud. It handles automated provisioning, backups, patching, and high availability.
+
+### Q: What is a VPC (Virtual Private Cloud)?
+**A:** A VPC is your private and isolated network inside AWS. It's like a gated community where you control the network topology, IP ranges, subnets, and security. Each VPC has a CIDR block that defines the IP address range.
+
+### Q: What is a Subnet in AWS?
+**A:** A subnet is a range of IP addresses in your VPC. You can launch AWS resources into a specific subnet. Subnets can be public (accessible from internet) or private (not directly accessible from internet).
+
+### Q: What is a Subnet Group in RDS?
+**A:** A DB Subnet Group is a collection of subnets that you designate for your RDS instances in a VPC. It must include at least one subnet in at least two Availability Zones in the region.
+
+### Q: What is a Security Group in AWS?
+**A:** A Security Group acts as a virtual firewall that controls inbound and outbound traffic for AWS resources. It operates at the instance level and provides stateful filtering.
+
+### Q: What is an ExternalName Service in Kubernetes?
+**A:** An ExternalName Service maps a service to an external DNS name, allowing pods to access external services using internal service names. It's commonly used to connect to external databases like RDS.
+
+### Q: What is Multi-AZ in RDS?
+**A:** Multi-AZ deployment creates a standby replica of your database in a different Availability Zone. It provides high availability and automatic failover capability for your database.
+
+### Q: What is RDS Read Replica?
+**A:** A Read Replica is a read-only copy of your primary database instance. It's used to scale read operations and can be promoted to a standalone database instance.
+
+### Q: What is RDS Automated Backups?
+**A:** RDS automatically backs up your database and transaction logs, enabling point-in-time recovery. You can restore to any point in time within the backup retention period.
+
+### Q: What is RDS Encryption at Rest?
+**A:** RDS encryption at rest encrypts your database storage using AWS KMS. It protects your data from unauthorized access to the underlying storage.
+
+---
+
+## Ingress & Load Balancing
+
+### Q: What is an Ingress in Kubernetes?
+**A:** An Ingress is an API object that manages external access to services in a cluster, typically HTTP/HTTPS. It provides load balancing, SSL termination, and name-based virtual hosting.
+
+### Q: What is an Ingress Controller?
+**A:** An Ingress Controller is a daemon that runs in your cluster and watches for Ingress resources. It configures the load balancer to route traffic according to the Ingress rules.
+
+### Q: What is AWS Load Balancer Controller?
+**A:** The AWS Load Balancer Controller is a Kubernetes controller that provisions AWS Application Load Balancers (ALB) and Network Load Balancers (NLB) based on Ingress and Service resources.
+
+### Q: What is an Application Load Balancer (ALB)?
+**A:** ALB is a Layer 7 load balancer that routes traffic based on content. It supports advanced routing features like host-based and path-based routing, making it ideal for microservices.
+
+### Q: What is a Network Load Balancer (NLB)?
+**A:** NLB is a Layer 4 load balancer that routes traffic based on IP protocol data. It's designed for high performance and can handle millions of requests per second.
+
+### Q: What are Ingress Annotations?
+**A:** Ingress Annotations are key-value pairs that provide additional configuration for Ingress controllers. They customize how the load balancer is created and configured.
+
+### Q: What is alb.ingress.kubernetes.io/scheme annotation?
+**A:** This annotation specifies whether the ALB should be internet-facing (accessible from internet) or internal (accessible only within VPC). Values are "internet-facing" or "internal".
+
+### Q: What is alb.ingress.kubernetes.io/target-type annotation?
+**A:** This annotation specifies how traffic is routed to targets. "ip" routes directly to pod IPs, while "instance" routes to node ports.
+
+### Q: What is alb.ingress.kubernetes.io/group.name annotation?
+**A:** This annotation allows multiple Ingress resources to share a single ALB by grouping them together. All Ingresses with the same group name will use the same load balancer.
+
+### Q: What is alb.ingress.kubernetes.io/ssl-redirect annotation?
+**A:** This annotation automatically redirects HTTP traffic to HTTPS on the specified port, ensuring secure communication.
+
+### Q: What is alb.ingress.kubernetes.io/certificate-arn annotation?
+**A:** This annotation specifies the ARN of the SSL certificate from AWS Certificate Manager (ACM) to use for HTTPS termination.
+
+### Q: What is alb.ingress.kubernetes.io/healthcheck-path annotation?
+**A:** This annotation specifies the path that the ALB should use for health checks to determine if targets are healthy.
+
+### Q: What is alb.ingress.kubernetes.io/listen-ports annotation?
+**A:** This annotation specifies the ports that the ALB should listen on, typically HTTP (80) and HTTPS (443).
+
+### Q: What is Host-based Routing?
+**A:** Host-based routing routes traffic based on the Host header in the HTTP request. It allows multiple domains to be served by the same load balancer.
+
+### Q: What is Path-based Routing?
+**A:** Path-based routing routes traffic based on the URL path in the HTTP request. It allows different paths to be routed to different backend services.
+
+---
+
+## Auto-scaling & Performance
+
+### Q: What is Horizontal Pod Autoscaler (HPA)?
+**A:** HPA automatically scales the number of pods in a deployment based on observed CPU utilization or custom metrics. It maintains the desired performance level by adjusting replica count.
+
+### Q: What is Vertical Pod Autoscaler (VPA)?
+**A:** VPA automatically adjusts the CPU and memory requests and limits of containers based on historical usage data. It optimizes resource allocation without changing replica count.
+
+### Q: What is Cluster Autoscaler?
+**A:** Cluster Autoscaler automatically adjusts the size of the Kubernetes cluster by adding or removing nodes based on resource demands and pod scheduling requirements.
+
+### Q: What is Metrics Server in Kubernetes?
+**A:** Metrics Server is a cluster-wide aggregator of resource usage data. It collects metrics from kubelets and exposes them via the Kubernetes API for use by HPA and other components.
+
+### Q: What is the difference between HPA and VPA?
+**A:** HPA scales horizontally by changing the number of pod replicas, while VPA scales vertically by adjusting the resource requests and limits of individual containers.
+
+### Q: What are HPA scaling metrics?
+**A:** HPA can scale based on various metrics including CPU utilization, memory utilization, custom metrics, and external metrics. The most common is CPU percentage.
+
+### Q: What is HPA scaling behavior?
+**A:** HPA scaling behavior defines how quickly and aggressively the autoscaler should scale up or down. It includes parameters like scale-up/down stabilization windows and policies.
+
+### Q: What is the HPA scaling algorithm?
+**A:** HPA calculates the desired number of replicas based on current metrics, target metrics, and current replica count. It uses the formula: desiredReplicas = ceil[currentReplicas * (currentMetricValue / desiredMetricValue)].
+
+### Q: What is HPA stabilization window?
+**A:** The stabilization window prevents HPA from scaling too frequently by waiting for a specified period before scaling again. It helps avoid thrashing and provides stability.
+
+### Q: What is HPA scale-down delay?
+**A:** Scale-down delay is the time HPA waits before scaling down after a scale-up event. It prevents rapid scaling oscillations and ensures system stability.
+
+### Q: What is HPA scale-up delay?
+**A:** Scale-up delay is the time HPA waits before scaling up after a scale-down event. It prevents premature scaling and allows time for the system to stabilize.
+
+### Q: What are Custom Metrics in HPA?
+**A:** Custom metrics allow HPA to scale based on application-specific metrics like request rate, queue length, or business metrics, not just CPU and memory.
+
+### Q: What is External Metrics in HPA?
+**A:** External metrics allow HPA to scale based on metrics from external systems like cloud providers, monitoring systems, or custom applications outside the cluster.
+
+### Q: What is HPA readiness check?
+**A:** HPA readiness check ensures that newly created pods are ready to serve traffic before considering them in scaling decisions. It prevents scaling based on unready pods.
+
+### Q: What is HPA resource utilization target?
+**A:** The resource utilization target is the percentage of resource usage (CPU/memory) that HPA tries to maintain. For example, 70% CPU utilization means HPA will scale to keep CPU usage around 70%.
+
+---
+
 ## Security & Access Control
 
 ### Q: What is a ConfigMap in Kubernetes?
@@ -390,4 +525,4 @@
 
 ---
 
-*This comprehensive definitions guide covers all major concepts from the Docker-Kubernetes Training repository. Each term is explained in a question-answer format for easy reference and learning.*
+*This comprehensive definitions guide covers all major concepts from the 18-day Docker-Kubernetes Training repository. Each term is explained in a question-answer format for easy reference and learning. The guide includes fundamental Docker concepts, Kubernetes core components, AWS EKS integration, RDS database connectivity, advanced load balancing with Ingress, auto-scaling with HPA, and production-ready configurations.*
