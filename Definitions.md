@@ -43,6 +43,12 @@
 ### Q: What is Container Orchestration?
 **A:** Imagine you have 100 containers running across 10 different computers. Container orchestration is like having a smart manager that automatically handles all the boring stuff: starting containers, stopping them, moving them between computers, and making sure they're healthy. It's like having a super-organized assistant for your containers!
 
+### Q: What is Docker Compose?
+**A:** Docker Compose is like having a recipe for a whole meal instead of just one dish! 🍽️ It's a tool that lets you define and run multiple containers together using a simple YAML file. Instead of running each container separately, you can start your entire application stack with one command. It's like having a master chef who coordinates all the dishes for a dinner party!
+
+### Q: What is .dockerignore?
+**A:** .dockerignore is like a "do not pack" list for your suitcase! 🧳 It tells Docker which files and folders to ignore when building your image. This keeps your image smaller and faster by excluding unnecessary files like logs, temporary files, or your .git folder. It's like having a smart packing assistant who knows what to leave behind.
+
 ---
 
 ## 💻 Docker Commands
@@ -134,6 +140,15 @@
 ### Q: What does `ENV` do in a Dockerfile?
 **A:** This sets environment variables! 🌍 It's like setting system preferences that your application can read. For example, `ENV DEBUG=true` tells your app that debugging is enabled.
 
+### Q: What does `LABEL` do in a Dockerfile?
+**A:** This adds metadata to your image! 🏷️ It's like putting a label on a package with information about who made it, what version it is, or how to contact the maintainer. It doesn't affect how the image works, but it helps with organization and documentation.
+
+### Q: What does `ADD` do in a Dockerfile?
+**A:** `ADD` is like a more powerful version of `COPY`! 📦 It can copy files AND automatically extract compressed files (like .tar or .zip). It can also download files from URLs. However, `COPY` is usually preferred because it's more predictable and secure.
+
+### Q: What is the difference between `ADD` and `COPY`?
+**A:** Great question! `COPY` is like a simple photocopier - it just copies files from one place to another. `ADD` is like a smart photocopier that can also extract zip files and download from the internet. For most cases, use `COPY` because it's clearer and safer.
+
 ### Q: What's the difference between CMD and ENTRYPOINT?
 **A:** Think of `ENTRYPOINT` as the main program and `CMD` as the default settings! 🎮 `ENTRYPOINT` is like the game launcher that always runs, while `CMD` provides default options that can be changed. Together, they create flexible command structures.
 
@@ -173,6 +188,21 @@
 
 ### Q: What is Minikube?
 **A:** Minikube is like a practice field for Kubernetes! 🏟️ It runs a small Kubernetes cluster on your laptop for learning and testing. It's perfect for trying things out without needing expensive cloud resources.
+
+### Q: What is kubeconfig?
+**A:** kubeconfig is like your address book for Kubernetes clusters! 📖 It's a file that stores information about clusters, users, and contexts. It tells kubectl which cluster to talk to and how to authenticate. It's like having a contact list that remembers all your Kubernetes cluster connections.
+
+### Q: What is a Context in Kubernetes?
+**A:** A Context is like choosing which office you want to work in today! 🏢 It combines cluster information, user credentials, and namespace into one convenient setting. You can switch between different contexts to work with different clusters or namespaces. It's like having different work environments you can switch between.
+
+### Q: What are Labels in Kubernetes?
+**A:** Labels are like name tags for your Kubernetes objects! 🏷️ They're key-value pairs that you attach to objects to organize and select them. You can use labels to group related objects or find specific ones. It's like putting colored stickers on your files to organize them.
+
+### Q: What are Selectors in Kubernetes?
+**A:** Selectors are like search filters for your Kubernetes objects! 🔍 They use labels to find and group objects. For example, a ReplicaSet uses a selector to find all Pods with matching labels. It's like using a search engine to find all files with a specific tag.
+
+### Q: What are Annotations in Kubernetes?
+**A:** Annotations are like sticky notes on your Kubernetes objects! 📝 They store metadata that doesn't affect how Kubernetes manages the object. They're used for documentation, tooling, or storing information for external systems. It's like having notes that explain or describe your objects.
 
 ---
 
@@ -304,6 +334,15 @@
 
 ### Q: What is RDS Encryption at Rest?
 **A:** RDS Encryption at Rest is like having a safe for your database! 🔐 Your data is encrypted when it's stored on disk, so even if someone steals the physical storage, they can't read your data without the key.
+
+### Q: What are EBS Volume Types (gp2, gp3, io1, io2, st1, sc1)?
+**A:** EBS volume types are like different types of storage for different needs! 💾 **gp2/gp3** are like regular hard drives - good for most things. **io1/io2** are like super-fast SSDs for databases. **st1** is like a big storage room for backups. **sc1** is like a cold storage room for archives. Each type has different speed and cost characteristics.
+
+### Q: What is EFS (Elastic File System)?
+**A:** EFS is like having a shared network drive in the cloud! 📁 Multiple computers can access the same files simultaneously. Unlike EBS (which is like a personal hard drive), EFS is like a shared folder that everyone can use at the same time. Perfect for shared data or web content.
+
+### Q: What is S3 (Simple Storage Service)?
+**A:** S3 is like having an infinite filing cabinet in the cloud! 📂 It's designed for storing files, images, backups, and any kind of data. It's super reliable, scalable, and cost-effective. Think of it as a massive storage service where you can store anything and access it from anywhere.
 
 ---
 
